@@ -1,30 +1,30 @@
 <?php
 
-namespace LasseRafn\Dinero;
+namespace Danijwilliams\Dinero;
 
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
-use LasseRafn\Dinero\Builders\BookingBuilder;
-use LasseRafn\Dinero\Builders\ContactBuilder;
-use LasseRafn\Dinero\Builders\CreditnoteBuilder;
-use LasseRafn\Dinero\Builders\DepositAccountBuilder;
-use LasseRafn\Dinero\Builders\EntryAccountBuilder;
-use LasseRafn\Dinero\Builders\InvoiceBuilder;
-use LasseRafn\Dinero\Builders\PaymentBuilder;
-use LasseRafn\Dinero\Builders\ProductBuilder;
-use LasseRafn\Dinero\Builders\PurchaseVoucherBuilder;
-use LasseRafn\Dinero\Exceptions\DineroRequestException;
-use LasseRafn\Dinero\Exceptions\DineroServerException;
-use LasseRafn\Dinero\Requests\BookingRequestBuilder;
-use LasseRafn\Dinero\Requests\ContactRequestBuilder;
-use LasseRafn\Dinero\Requests\CreditnoteRequestBuilder;
-use LasseRafn\Dinero\Requests\DepositAccountRequestBuilder;
-use LasseRafn\Dinero\Requests\EntryAccountRequestBuilder;
-use LasseRafn\Dinero\Requests\InvoiceRequestBuilder;
-use LasseRafn\Dinero\Requests\PaymentRequestBuilder;
-use LasseRafn\Dinero\Requests\ProductRequestBuilder;
-use LasseRafn\Dinero\Requests\PurchaseVoucherRequestBuilder;
-use LasseRafn\Dinero\Utils\Request;
+use Danijwilliams\Dinero\Builders\BookingBuilder;
+use Danijwilliams\Dinero\Builders\ContactBuilder;
+use Danijwilliams\Dinero\Builders\CreditnoteBuilder;
+use Danijwilliams\Dinero\Builders\DepositAccountBuilder;
+use Danijwilliams\Dinero\Builders\EntryAccountBuilder;
+use Danijwilliams\Dinero\Builders\InvoiceBuilder;
+use Danijwilliams\Dinero\Builders\PaymentBuilder;
+use Danijwilliams\Dinero\Builders\ProductBuilder;
+use Danijwilliams\Dinero\Builders\PurchaseVoucherBuilder;
+use Danijwilliams\Dinero\Exceptions\DineroRequestException;
+use Danijwilliams\Dinero\Exceptions\DineroServerException;
+use Danijwilliams\Dinero\Requests\BookingRequestBuilder;
+use Danijwilliams\Dinero\Requests\ContactRequestBuilder;
+use Danijwilliams\Dinero\Requests\CreditnoteRequestBuilder;
+use Danijwilliams\Dinero\Requests\DepositAccountRequestBuilder;
+use Danijwilliams\Dinero\Requests\EntryAccountRequestBuilder;
+use Danijwilliams\Dinero\Requests\InvoiceRequestBuilder;
+use Danijwilliams\Dinero\Requests\PaymentRequestBuilder;
+use Danijwilliams\Dinero\Requests\ProductRequestBuilder;
+use Danijwilliams\Dinero\Requests\PurchaseVoucherRequestBuilder;
+use Danijwilliams\Dinero\Utils\Request;
 
 class Dinero
 {
