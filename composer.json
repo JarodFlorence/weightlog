@@ -1,12 +1,12 @@
 {
-    "name": "lasserafn/php-dinero",
+    "name": "danijwilliams/php-dinero",
     "description": "Dinero REST wrapper for PHP",
     "keywords": ["laravel", "wrapper", "dinero", "api", "integration"],
     "license": "MIT",
     "authors": [
         {
-            "name": "Lasse Rafn",
-            "email": "lasserafn@gmail.com"
+            "name": "Daniel Williams",
+            "email": "danieljwilliams509@gmail.com"
         }
     ],
     "require": {
@@ -19,12 +19,12 @@
     },
     "autoload": {
         "psr-4": {
-            "LasseRafn\\Dinero\\": "src"
+            "danijwilliams\\Dinero\\": "src"
         }
     },
 	"autoload-dev": {
 		"psr-4": {
-			"LasseRafn\\Dinero\\Tests\\": "tests/"
+			"danijwilliams\\Dinero\\Tests\\": "tests/"
 		}
 	}
 }
