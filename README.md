@@ -7,7 +7,7 @@ This is a PHP wrapper for Dinero.
 1. Require using composer
 
 ```
-composer require lasserafn/php-dinero
+composer require danijwilliams/php-dinero
 ```
 
 ### Requirements
@@ -29,7 +29,7 @@ composer require lasserafn/php-dinero
 5. Utilize the wrapper as below
 
 ``` php
- $dinero = new \LasseRafn\Dinero\Dinero( $clientId, $clientSecret );
+ $dinero = new \danijwilliams\Dinero\Dinero( $clientId, $clientSecret );
  $dinero->auth( $apiKey, $orgId ); // this WILL send a request to the auth API.
  
  $contacts = $dinero->contacts()->perPage(10)->page(2)->get();
@@ -48,7 +48,7 @@ composer require lasserafn/php-dinero
 You can also use an old auth token, if you dont want to auth everytime you setup a new instance of Dinero.
 
 ``` php
- $dinero = new \LasseRafn\Dinero\Dinero( $clientId, $clientSecret );
+ $dinero = new \danijwilliams\Dinero\Dinero( $clientId, $clientSecret );
  $dinero->setAuth($token, $orgId); // this will NOT send a request to the auth API.
  
  $products = $dinero->products()->deletedOnly()->all();
@@ -60,7 +60,7 @@ You can also use an old auth token, if you dont want to auth everytime you setup
 
 ``` php
 // Create Instance
-$dinero = new \LasseRafn\Dinero\Dinero( $clientId, $clientSecret );
+$dinero = new \danijwilliams\Dinero\Dinero( $clientId, $clientSecret );
 
 // Auth to a Dinero account
 $dinero->auth( $apiKey, $orgId );
