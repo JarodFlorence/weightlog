@@ -1,6 +1,6 @@
-<?php namespace LasseRafn\Dinero\Models;
+<?php namespace Danijwilliams\Dinero\Models;
 
-use LasseRafn\Dinero\Utils\Model;
+use Danijwilliams\Dinero\Utils\Model;
 
 class Book extends Model
 {

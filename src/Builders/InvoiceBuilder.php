@@ -1,8 +1,8 @@
 <?php
 
-namespace LasseRafn\Dinero\Builders;
+namespace Danijwilliams\Dinero\Builders;
 
-use LasseRafn\Dinero\Models\Invoice;
+use Danijwilliams\Dinero\Models\Invoice;
 
 class InvoiceBuilder extends Builder
 {

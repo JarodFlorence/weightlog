@@ -1,15 +1,15 @@
 <?php
 
-namespace LasseRafn\Dinero\Builders;
+namespace Danijwilliams\Dinero\Builders;
 
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
-use LasseRafn\Dinero\Exceptions\DineroRequestException;
-use LasseRafn\Dinero\Exceptions\DineroServerException;
-use LasseRafn\Dinero\Responses\PaginatedResponse;
-use LasseRafn\Dinero\Responses\ResponseInterface;
-use LasseRafn\Dinero\Utils\Model;
-use LasseRafn\Dinero\Utils\Request;
+use Danijwilliams\Dinero\Exceptions\DineroRequestException;
+use Danijwilliams\Dinero\Exceptions\DineroServerException;
+use Danijwilliams\Dinero\Responses\PaginatedResponse;
+use Danijwilliams\Dinero\Responses\ResponseInterface;
+use Danijwilliams\Dinero\Utils\Model;
+use Danijwilliams\Dinero\Utils\Request;
 
 class Builder
 {

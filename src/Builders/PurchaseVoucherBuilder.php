@@ -1,8 +1,8 @@
 <?php
 
-namespace LasseRafn\Dinero\Builders;
+namespace Danijwilliams\Dinero\Builders;
 
-use LasseRafn\Dinero\Models\PurchaseVoucher;
+use Danijwilliams\Dinero\Models\PurchaseVoucher;
 
 class PurchaseVoucherBuilder extends Builder
 {

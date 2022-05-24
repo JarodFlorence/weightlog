@@ -1,8 +1,8 @@
 <?php namespace LasseRafn\Dinero\Builders;
 
-use LasseRafn\Dinero\Models\Payment;
-use LasseRafn\Dinero\Responses\ListResponse;
-use LasseRafn\Dinero\Utils\Request;
+use Danijwilliams\Dinero\Models\Payment;
+use Danijwilliams\Dinero\Responses\ListResponse;
+use Danijwilliams\Dinero\Utils\Request;
 
 class PaymentBuilder extends Builder
 {

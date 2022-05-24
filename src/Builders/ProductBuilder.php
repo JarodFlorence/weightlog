@@ -1,8 +1,8 @@
 <?php
 
-namespace LasseRafn\Dinero\Builders;
+namespace Danijwilliams\Dinero\Builders;
 
-use LasseRafn\Dinero\Models\Product;
+use Danijwilliams\Dinero\Models\Product;
 
 class ProductBuilder extends Builder
 {

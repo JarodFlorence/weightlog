@@ -1,10 +1,10 @@
 <?php
 
-namespace LasseRafn\Dinero\Models;
+namespace Danijwilliams\Dinero\Models;
 
-use LasseRafn\Dinero\Builders\PaymentBuilder;
-use LasseRafn\Dinero\Requests\PaymentRequestBuilder;
-use LasseRafn\Dinero\Utils\Model;
+use Danijwilliams\Dinero\Builders\PaymentBuilder;
+use Danijwilliams\Dinero\Requests\PaymentRequestBuilder;
+use Danijwilliams\Dinero\Utils\Model;
 
 class Invoice extends Model
 {

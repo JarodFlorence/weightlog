@@ -1,10 +1,10 @@
 <?php
 
-namespace LasseRafn\Dinero\Builders;
+namespace Danijwilliams\Dinero\Builders;
 
-use LasseRafn\Dinero\Exceptions\DineroRequestException;
-use LasseRafn\Dinero\Exceptions\DineroServerException;
-use LasseRafn\Dinero\Models\EntryAccount;
+use Danijwilliams\Dinero\Exceptions\DineroRequestException;
+use Danijwilliams\Dinero\Exceptions\DineroServerException;
+use Danijwilliams\Dinero\Models\EntryAccount;
 
 class EntryAccountBuilder extends Builder
 {

@@ -1,7 +1,7 @@
-<?php namespace LasseRafn\Dinero\Requests;
+<?php namespace Danijwilliams\Dinero\Requests;
 
-use LasseRafn\Dinero\Builders\Builder;
-use LasseRafn\Dinero\Utils\RequestBuilder;
+use Danijwilliams\Dinero\Builders\Builder;
+use Danijwilliams\Dinero\Utils\RequestBuilder;
 
 class PaymentRequestBuilder extends RequestBuilder
 {

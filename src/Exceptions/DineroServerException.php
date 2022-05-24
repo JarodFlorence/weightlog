@@ -1,6 +1,6 @@
 <?php
 
-namespace LasseRafn\Dinero\Exceptions;
+namespace Danijwilliams\Dinero\Exceptions;
 
 use GuzzleHttp\Exception\ServerException;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace LasseRafn\Dinero\Utils;
+namespace Danijwilliams\Dinero\Utils;
 
 class Model
 {

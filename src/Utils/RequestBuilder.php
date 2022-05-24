@@ -1,9 +1,9 @@
 <?php
 
-namespace LasseRafn\Dinero\Utils;
+namespace Danijwilliams\Dinero\Utils;
 
-use LasseRafn\Dinero\Builders\Builder;
-use LasseRafn\Dinero\Responses\PaginatedResponse;
+use Danijwilliams\Dinero\Builders\Builder;
+use Danijwilliams\Dinero\Responses\PaginatedResponse;
 
 class RequestBuilder
 {
@@ -11,12 +11,11 @@ class RequestBuilder
 
 	protected $parameters = [];
 	protected $dateFormat = 'Y-m-d';
-    protected $dateTimeFormat = 'Y-m-d\TH:m:s\Z';
+    	protected $dateTimeFormat = 'Y-m-d\TH:m:s\Z';
 
 	public function __construct( Builder $builder ) {
 		$this->parameters['page']     = 0;
 		$this->parameters['pageSize'] = 100;
-
 		$this->builder = $builder;
 	}
 
@@ -34,7 +33,6 @@ class RequestBuilder
         } elseif (is_string($fields) || is_int($fields)) {
             $this->parameters['fields'] = $fields;
         }
-
 		return $this;
 	}
 
@@ -100,7 +98,7 @@ class RequestBuilder
 	 * @return $this
 	 */
 	public function since( \DateTime $date ) {
-        $this->parameters['changesSince'] = $date->format($this->dateTimeFormat);
+        	$this->parameters['changesSince'] = $date->format($this->dateTimeFormat);
 
 		return $this;
 	}

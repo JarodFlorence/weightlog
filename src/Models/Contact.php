@@ -1,8 +1,8 @@
 <?php
 
-namespace LasseRafn\Dinero\Models;
+namespace Danijwilliams\Dinero\Models;
 
-use LasseRafn\Dinero\Utils\Model;
+use Danijwilliams\Dinero\Utils\Model;
 
 class Contact extends Model
 {

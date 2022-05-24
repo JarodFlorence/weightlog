@@ -1,8 +1,8 @@
 <?php
 
-namespace LasseRafn\Dinero\Builders;
+namespace Danijwilliams\Dinero\Builders;
 
-use LasseRafn\Dinero\Models\Creditnote;
+use Danijwilliams\Dinero\Models\Creditnote;
 
 class CreditnoteBuilder extends Builder
 {

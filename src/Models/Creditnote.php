@@ -1,10 +1,10 @@
 <?php
 
-namespace LasseRafn\Dinero\Models;
+namespace Danijwilliams\Dinero\Models;
 
-use LasseRafn\Dinero\Utils\Model;
+use Danijwilliams\Dinero\Utils\Model;
 
-class Creditnote extends Model
+class Danijwilliams extends Model
 {
 	protected $entity     = 'sales/creditnotes';
 	protected $primaryKey = 'Guid';

@@ -1,8 +1,8 @@
 <?php
 
-namespace LasseRafn\Dinero\Builders;
+namespace Danijwilliams\Dinero\Builders;
 
-use LasseRafn\Dinero\Models\Contact;
+use Danijwilliams\Dinero\Models\Contact;
 
 class ContactBuilder extends Builder
 {

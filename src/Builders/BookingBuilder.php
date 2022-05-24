@@ -1,8 +1,8 @@
-<?php namespace LasseRafn\Dinero\Builders;
+<?php namespace Danijwilliams\Dinero\Builders;
 
-use LasseRafn\Dinero\Models\Book;
-use LasseRafn\Dinero\Responses\ListResponse;
-use LasseRafn\Dinero\Utils\Request;
+use Danijwilliams\Dinero\Models\Book;
+use Danijwilliams\Dinero\Responses\ListResponse;
+use Danijwilliams\Dinero\Utils\Request;
 
 class BookingBuilder extends Builder
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace LasseRafn\Dinero\Responses;
+namespace Danijwilliams\Dinero\Responses;
 
 use GuzzleHttp\Psr7\Response;
 
