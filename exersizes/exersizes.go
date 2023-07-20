@@ -1,34 +1,44 @@
-package exersizes
+package exercises
 
 import (
 	"../util"
 )
 
-type Exersize struct {
-	Name string `json:name`
+const (
+	saveExerciseQuery     = "INSERT INTO exercises (name) VALUES ($1);"
+	getAllExercisesQuery  = "SELECT name FROM exercises;"
+)
+
+type Exercise struct {
+	Name string `json:"name"`
 }
 
-func (e *Exersize) Save(db util.DB) error {
-	_, err := db.Exec("INSERT INTO exersizes (name) VALUES ($1);", e.Name)
-	if err != nil {
-		return err
-	}
-	return nil
+func (e *Exercise) Save(db util.DB) error {
+	_, err := db.Exec(saveExerciseQuery, e.Name)
+	return err
 }
 
-func GetAll(db util.DB) ([]*Exersize, error) {
-	rows, err := db.Query("SELECT name FROM exersizes;")
+func GetAll(db util.DB) ([]*Exercise, error) {
+	rows, err := db.Query(getAllExercisesQuery)
 	if err != nil {
 		return nil, err
 	}
-	es := make([]*Exersize, 0, 10)
+	defer rows.Close()
+
+	exercises := make([]*Exercise, 0)
 	for rows.Next() {
-		e := &Exersize{}
-		err := rows.Scan(&e.Name)
+		exercise := &Exercise{}
+		err := rows.Scan(&exercise.Name)
 		if err != nil {
 			return nil, err
 		}
-		es = append(es, e)
+		exercises = append(exercises, exercise)
 	}
-	return es, nil
+
+	// Check if rows.Next() stopped due to an error
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+
+	return exercises, nil
 }
