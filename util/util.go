@@ -12,7 +12,7 @@ var db_url string
 func init() {
 	db_url = os.Getenv("DATABASE_URL")
 	if db_url == "" {
-		db_url = "user=weightlog dbname=weightlog password=weightlog sslmode=disable"
+		log.Fatalf("Database connection string is missing")
 	}
 }
 
@@ -22,22 +22,19 @@ type DB interface {
 	QueryRow(query string, args ...interface{}) *sql.Row
 }
 
-func GetTestDb() *sql.DB {
-	var err error
-	db, err := sql.Open("postgres", "user=weightlog dbname=weightlog_test password=weightlog sslmode=disable")
-	if err != nil {
-		log.Fatal(err)
-	}
-	return db
-}
-
-func GetDb() *sql.DB {
+func GetDb() (*sql.DB, error) {
 	db, err := sql.Open("postgres", db_url)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
-	return db
+
+	if err := db.Ping(); err != nil {
+		return nil, err
+	}
+
+	return db, nil
 }
+
 func GetLastId(db DB, tablename string) (id int64, err error) {
 	row := db.QueryRow("SELECT currval(pg_get_serial_sequence($1, 'id'));", tablename)
 	err = row.Scan(&id)
