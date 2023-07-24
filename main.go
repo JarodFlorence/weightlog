@@ -112,11 +112,39 @@ func registerHandler(rw http.ResponseWriter, req *http.Request) {
 	writeJSON(rw, resp)
 }
 
+func updateHandler(rw http.ResponseWriter, req *http.Request) {
+	setJSON(rw)
+	email := req.FormValue("email")
+	newEmail := req.FormValue("new_email")
+	pw := req.FormValue("password")
+	if len(email) == 0 || len(newEmail) == 0 || len(pw) == 0 {
+		http.Error(rw, "{errors:[\"missing_data\"]}", 400)
+		return
+	}
+	db := util.GetDB()
+	defer db.Close()
+	u, err := users.GetByEmail(db, email)
+	if err != nil || !u.Verify(pw) {
+		log.Printf("error while looking up user: %v", err)
+		http.Error(rw, "{errors:[\"bad_login\"]}", 400)
+		return
+	}
+	u.Email = newEmail
+	err = u.Update(db)
+	if err != nil {
+		log.Printf("error while updating user: %v", err)
+		http.Error(rw, "{errors:[\"db_error\"]}", 500)
+		return
+	}
+	rw.Write([]byte(fmt.Sprintf(`{errors:[], user:{id:%v, email:%v}}`, u.Id, u.Email)))
+}
+
 func main() {
 	router := mux.NewRouter()
-	router.HandleFunc("/", rootHandler).Methods(http.MethodGet)
-	router.HandleFunc("/login", loginHandler).Methods(http.MethodPost)
-	router.HandleFunc("/register", registerHandler).Methods(http.MethodPost)
+	router.HandleFunc("/", rootHandler).Methods("GET").Name("root")
+	router.HandleFunc("/login", loginHandler).Methods("POST").Name("login")
+	router.HandleFunc("/register", registerHandler).Methods("POST").Name("register")
+	router.HandleFunc("/update", updateHandler).Methods("POST").Name("update")
 
 	port := os.Getenv("PORT")
 	if len(port) == 0 {
