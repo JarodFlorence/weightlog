@@ -3,7 +3,6 @@ package users
 import (
 	"../util"
 	"errors"
-	"fmt"
 	"github.com/jameskeane/bcrypt"
 )
 
@@ -14,37 +13,34 @@ type User struct {
 	saved  bool
 }
 
-var ErrUserDoesNotExist error = errors.New("User does not exist")
+var ErrUserDoesNotExist = errors.New("User does not exist")
+
+func scanUser(row *sql.Row) (u *User, err error) {
+	u = &User{}
+	err = row.Scan(&u.Id, &u.Email, &u.PwHash)
+	if err != nil {
+		return nil, err
+	}
+	u.saved = true
+	return u, nil
+}
 
 func GetByEmail(db util.DB, email string) (u *User, err error) {
 	row := db.QueryRow("SELECT id, email, pw_hash FROM users WHERE email = $1;", email)
-
-	u = &User{}
-	err = row.Scan(&u.Id, &u.Email, &u.PwHash)
-	if err != nil {
-		return nil, err
-	}
-	u.saved = true
-	return u, nil
+	return scanUser(row)
 }
+
 func GetById(db util.DB, id int64) (u *User, err error) {
 	row := db.QueryRow("SELECT id, email, pw_hash FROM users WHERE id = $1;", id)
+	return scanUser(row)
+}
 
-	u = &User{}
-	err = row.Scan(&u.Id, &u.Email, &u.PwHash)
-	if err != nil {
-		return nil, err
-	}
-	u.saved = true
-	return u, nil
-}
 func (u *User) String() string {
-	return fmt.Sprintf("User{id: %v, email:%v, pw_hash:%v, saved: %v}", u.Id,
-		u.Email, u.PwHash, u.saved)
+	return fmt.Sprintf("User{id: %v, email:%v, pw_hash:%v, saved: %v}", u.Id, u.Email, u.PwHash, u.saved)
 }
+
 func New(email, password string) (*User, error) {
-	u := &User{}
-	u.Email = email
+	u := &User{Email: email}
 	hash, err := bcrypt.HashBytes([]byte(password))
 	if err != nil {
 		return nil, err
@@ -79,8 +75,6 @@ func (u *User) update(db util.DB) error {
 func (u *User) Save(db util.DB) error {
 	if u.saved {
 		return u.update(db)
-	} else {
-		return u.saveNew(db)
 	}
-	return nil
+	return u.saveNew(db)
 }
