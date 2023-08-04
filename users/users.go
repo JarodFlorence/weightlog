@@ -78,3 +78,37 @@ func (u *User) Save(db util.DB) error {
 	}
 	return u.saveNew(db)
 }
+
+func (u *User) Delete(db util.DB) error {
+    _, err := db.Exec("DELETE FROM users WHERE id=$1", u.Id)
+    return err
+}
+
+func (u *User) UpdatePassword(db util.DB, newPassword string) error {
+    hash, err := bcrypt.HashBytes([]byte(newPassword))
+    if err != nil {
+        return err
+    }
+    u.PwHash = hash
+    return u.update(db)
+}
+
+func GetAll(db util.DB) ([]*User, error) {
+    rows, err := db.Query("SELECT id, email, pw_hash FROM users")
+    if err != nil {
+        return nil, err
+    }
+    defer rows.Close()
+    
+    users := []*User{}
+    for rows.Next() {
+        user, err := scanUser(rows)
+        if err != nil {
+            return nil, err
+        }
+        users = append(users, user)
+    }
+    
+    return users, nil
+}
+
