@@ -78,3 +78,8 @@ func (u *User) Save(db util.DB) error {
 	}
 	return u.saveNew(db)
 }
+
+func (u *User) Delete(db util.DB) error {
+    _, err := db.Exec("DELETE FROM users WHERE id=$1", u.Id)
+    return err
+}
