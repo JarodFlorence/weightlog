@@ -40,6 +40,13 @@ func (u *User) String() string {
 }
 
 func New(email, password string) (*User, error) {
+	if !isValidEmail(email) {
+		return nil, errors.New("Invalid email format")
+	}
+	if !isValidPassword(password) {
+		return nil, errors.New("Password must be at least 8 characters long and include at least one number")
+	}
+
 	u := &User{Email: email}
 	hash, err := bcrypt.HashBytes([]byte(password))
 	if err != nil {
@@ -112,3 +119,14 @@ func GetAll(db util.DB) ([]*User, error) {
     return users, nil
 }
 
+func isValidEmail(email string) bool {
+	// Basic regex to check email format
+	re := regexp.MustCompile(`^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`)
+	return re.MatchString(email)
+}
+
+func isValidPassword(password string) bool {
+	// Example: Require at least 8 characters, including at least one number
+	re := regexp.MustCompile(`^(?=.*[0-9]).{8,}$`)
+	return re.MatchString(password)
+}
